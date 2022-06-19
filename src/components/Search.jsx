@@ -1,29 +1,27 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { BiSearchAlt } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
 	const [search, setSearch] = useState("");
-	//const [SearchedMovies, setSearchedMovies] =
-	useState([]);
 
-	const handeSearch = (e) => {
+	const navigate = useNavigate();
+
+	const handeSearch = async (e) => {
 		e.preventDefault();
-		setSearch("apple");
-		console.log(search);
-		// const searchMovies = await axios.get(
-		// 	`https://api.themoviedb.org/3/search/movie?api_key=0a82a71f7db762d5f3249e80ca6bc5db&query=${search}`,
-		// );
-
-		// await setSearchedMovies(searchMovies);
-
-		//console.log(SearchedMovies);
-		//console.log(search);
+		if (search !== "") {
+			navigate("/searches/" + search);
+		} else {
+			return;
+		}
 	};
 
 	return (
-		<div>
-			<form onSubmit={handeSearch}>
+		<form onSubmit={handeSearch}>
+			<div className="relative">
 				<input
+					className="searchbar bg-[#191A1F] text-white rounded-lg"
 					type="text"
 					placeholder="search movies"
 					value={search}
@@ -31,8 +29,9 @@ const Search = () => {
 						setSearch(e.target.value);
 					}}
 				/>
-			</form>
-		</div>
+				<BiSearchAlt className="icon" />
+			</div>
+		</form>
 	);
 };
 
