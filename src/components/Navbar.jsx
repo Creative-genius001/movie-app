@@ -4,7 +4,7 @@ import Search from "./Search";
 
 const NavBar = () => {
 	return (
-		<div className="w-full flex justify-between items-center content-center bg-[#060607] py-3 px-8 lg:flex-row">
+		<div className="nav w-full flex justify-between items-center content-center bg-[#060607] py-3 px-8 lg:flex-row  md:flex-col">
 			<h1 className="font-bold text-[3rem] text-red-600">
 				<NavLink to="/">NETMOVIES</NavLink>
 			</h1>

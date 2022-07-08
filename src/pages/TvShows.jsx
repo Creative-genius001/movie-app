@@ -1,50 +1,51 @@
-import React, {
-	useState,
-	useEffect,
-} from "react";
+import React from "react";
 import axios from "axios";
-import {
-	useParams,
-	useNavigate,
-} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const SeachedMovie = () => {
-	const params = useParams();
-	const [searchedMovies, setSearchedMovies] =
-		useState([]);
-
-	const searchResult = async (data) => {
-		const searchMovies = await axios
-			.get(
-				`https://api.themoviedb.org/3/search/movie?api_key=0a82a71f7db762d5f3249e80ca6bc5db&query=${data}`,
-			)
-			.catch((err) => console.error(err));
-
-		if (searchMovies === []) {
-			return;
-		} else {
-			setSearchedMovies(
-				searchMovies.data.results,
-			);
-		}
-	};
+const TvShows = () => {
+	const [ratedShow, setRatedShow] = useState([]);
 	useEffect(() => {
-		searchResult(params.search);
+		getRatedShow();
 	}, []);
 
+	const getRatedShow = async () => {
+		const check =
+			localStorage.getItem("ratedShow");
+
+		if (check) {
+			setRatedShow(JSON.parse(check));
+		} else {
+			const response = await axios
+				.get(
+					`https://api.themoviedb.org/3/tv/top_rated?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=1`,
+				)
+				.catch((err) => console.error(err));
+
+			let res = response.data.results;
+			console.log(res);
+
+			localStorage.setItem(
+				"ratedShow",
+				JSON.stringify(res),
+			);
+
+			setRatedShow(res);
+		}
+	};
 	let navigate = useNavigate();
 	const handleClick = (id) => {
-		navigate("/detail/" + id);
+		navigate("/details/" + id);
 	};
 
 	return (
 		<div className="w-[100%] h-auto bg-[#060607] px-4">
 			<div className=" w-[90%] mx-auto flex-row content-center justify-items-center py-4">
 				<h1 className="text-4xl font-bold text-white">
-					Results
+					TV Shows
 				</h1>
 				<div className=" flex flex-wrap ">
-					{searchedMovies.map((movie) => {
+					{ratedShow.map((movie) => {
 						const IMG =
 							"https://image.tmdb.org/t/p/original/" +
 							movie.poster_path;
@@ -54,7 +55,7 @@ const SeachedMovie = () => {
 									handleClick(movie.id)
 								}
 								key={movie.id}
-								className="movie-card h-auto w-[12rem] mr-4 my-4 p-2 bg-[#191A1F] flex flex-wrap rounded-lg">
+								className="movie-card cursor-pointer h-auto w-[12rem] mr-4 my-4 p-2 bg-[#191A1F] flex flex-wrap rounded-lg">
 								<div className="movie-img w-full">
 									<img
 										src={IMG}
@@ -90,4 +91,4 @@ const SeachedMovie = () => {
 	);
 };
 
-export default SeachedMovie;
+export default TvShows;

@@ -1,10 +1,20 @@
 import React from "react";
-import {
-	Splide,
-	SplideSlide,
-} from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 import { useNavigate } from "react-router-dom";
+// import Swiper JS
+import {
+	Keyboard,
+	Navigation,
+	Pagination,
+	EffectFade,
+} from "swiper";
+import {
+	Swiper,
+	SwiperSlide,
+} from "swiper/react";
+// import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const MovieCards = ({ Movies }) => {
 	const navigate = useNavigate();
@@ -15,21 +25,53 @@ const MovieCards = ({ Movies }) => {
 
 	return (
 		<>
-			<Splide
-				options={{
-					perPage: 6,
-					arrows: false,
-					pagination: true,
-					drag: "free",
-				}}>
-				{Movies.map((movie) => {
+			<Swiper
+				slidesPerView={1.5}
+				spaceBetween={20}
+				centeredSlides={false}
+				slidesPerGroupSkip={1}
+				grabCursor={true}
+				keyboard={{
+					enabled: true,
+				}}
+				breakpoints={{
+					640: {
+						slidesPerView: 3,
+						slidesPerGroup: 2,
+					},
+					900: {
+						slidesPerView: 4,
+						slidesPerGroup: 2,
+					},
+					1200: {
+						slidesPerView: 6,
+						slidesPerGroup: 2,
+					},
+				}}
+				navigation={false}
+				pagination={{
+					clickable: true,
+				}}
+				fadeEffect={{
+					crossFade: true,
+				}}
+				modules={[
+					Keyboard,
+					Navigation,
+					Pagination,
+					EffectFade,
+				]}
+				className="mySwiper">
+				{Movies.map((movie, index) => {
 					const IMG =
 						"https://image.tmdb.org/t/p/original/" +
 						movie.poster_path;
 
 					return (
-						<SplideSlide>
-							<div
+						<div
+							key={index}
+							className="swiper-wrapper">
+							<SwiperSlide
 								onClick={() =>
 									handleClick(movie.id)
 								}
@@ -60,11 +102,11 @@ const MovieCards = ({ Movies }) => {
 										</div>
 									</div>
 								</div>
-							</div>
-						</SplideSlide>
+							</SwiperSlide>
+						</div>
 					);
 				})}
-			</Splide>
+			</Swiper>
 		</>
 	);
 };

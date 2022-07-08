@@ -5,6 +5,7 @@ import React, {
 import axios from "axios";
 import Trending from "../components/Trending";
 import Search from "../components/Search";
+import RatedTvShow from "../components/RatedTvShow";
 
 const Home = () => {
 	const [TrendingMovies, setTrendingMovies] =
@@ -23,7 +24,7 @@ const Home = () => {
 		} else {
 			const response = await axios
 				.get(
-					"https://api.themoviedb.org/3/trending/movie/day?api_key=0a82a71f7db762d5f3249e80ca6bc5db",
+					`https://api.themoviedb.org/3/trending/movie/day?api_key=0a82a71f7db762d5f3249e80ca6bc5db`,
 				)
 				.catch((err) => console.error(err));
 
@@ -39,8 +40,9 @@ const Home = () => {
 	};
 
 	return (
-		<div className="w-[100%] h-[100vh] bg-[#060607] px-4 flex flex-col content-center justify-items-center py-4">
+		<div className="w-[100%]  bg-[#060607] px-4 flex flex-col content-center justify-items-center py-4">
 			<Trending TrendingMovies={TrendingMovies} />
+			<RatedTvShow />
 		</div>
 	);
 };

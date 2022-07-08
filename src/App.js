@@ -8,6 +8,8 @@ import SeachedMovie from "./pages/SearchedMovie";
 import NavBar from "./components/Navbar";
 import MovieDetail from "./pages/MovieDetail";
 import Popular from "./pages/Popular";
+import TvShows from "./pages/TvShows";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
 	return (
@@ -26,6 +28,10 @@ function App() {
 				<Route
 					path="/popular"
 					element={<Popular />}
+				/>
+				<Route
+					path="/tvshows"
+					element={<TvShows />}
 				/>
 			</Routes>
 		</BrowserRouter>

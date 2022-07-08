@@ -8,10 +8,11 @@ const Search = () => {
 
 	const navigate = useNavigate();
 
-	const handeSearch = async (e) => {
+	const handeSearch = (e) => {
 		e.preventDefault();
 		if (search !== "") {
 			navigate("/searches/" + search);
+			setSearch("");
 		} else {
 			return;
 		}

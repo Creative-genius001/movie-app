@@ -3,6 +3,7 @@ import React, {
 	useEffect,
 } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Popular = () => {
 	const [popular, setPopular] = useState([]);
@@ -11,21 +12,27 @@ const Popular = () => {
 		const searchMovies = await axios
 			.get(
 				`
-https://api.themoviedb.org/3/movie/popular?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=20`,
+https://api.themoviedb.org/3/movie/popular?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=200`,
 			)
 			.catch((err) => console.error(err));
 
 		setPopular(searchMovies.data.results);
+		console.log(popular);
 	};
 	useEffect(() => {
 		searchResult();
 	}, []);
 
+	let navigate = useNavigate();
+	const handleClick = (id) => {
+		navigate("/detail/" + id);
+	};
+
 	return (
 		<div className="w-[100%] h-auto bg-[#060607] px-4">
 			<div className=" w-[90%] mx-auto flex-row content-center justify-items-center py-4">
 				<h1 className="text-4xl font-bold text-white">
-					Results
+					Popular
 				</h1>
 				<div className=" flex flex-wrap ">
 					{popular.map((movie) => {
@@ -34,8 +41,11 @@ https://api.themoviedb.org/3/movie/popular?api_key=0a82a71f7db762d5f3249e80ca6bc
 							movie.poster_path;
 						return (
 							<div
+								onClick={() =>
+									handleClick(movie.id)
+								}
 								key={movie.id}
-								className="movie-card h-auto w-[12rem] mr-4 my-4 p-2 bg-[#191A1F] flex flex-wrap rounded-lg">
+								className="movie-card cursor-pointer h-auto w-[12rem] mr-4 my-4 p-2 bg-[#191A1F] flex flex-wrap rounded-lg">
 								<div className="movie-img w-full">
 									<img
 										src={IMG}

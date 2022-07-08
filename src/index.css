@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    background-color: #060607;
+}
+
 .badge{
     padding: 0px 4px;
     width: 2.4rem;
@@ -49,3 +53,11 @@ li:hover{
     top: 50%;
     z-index: 100;
 }
+
+
+@media (min-width: 640px) {
+    .nav {
+        flex-direction: column;
+    }
+}
+
