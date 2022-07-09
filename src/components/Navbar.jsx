@@ -4,12 +4,12 @@ import Search from "./Search";
 
 const NavBar = () => {
 	return (
-		<div className="w-full flex justify-between items-center content-center bg-[#060607] py-3 px-8 flex-col lg:flex-row md:flex-col">
+		<div className="w-[90%] mx-auto flex justify-between items-center content-center bg-[#060607] py-3 px-0 md:px-0 flex-col lg:flex-row md:flex-col">
 			<h1 className="font-bold text-[3rem] text-red-600">
 				<NavLink to="/">NETMOVIES</NavLink>
 			</h1>
 			<Search />
-			<div className="m-4 w-[500px] nav bg-[#060607]">
+			<div className="my-4 w-[100%] md:w-[500px] bg-[#060607]">
 				<ul className="list-none flex justify-around font-medium text-white text-[1.5rem]">
 					<li>
 						<NavLink

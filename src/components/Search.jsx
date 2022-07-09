@@ -21,7 +21,7 @@ const Search = () => {
 		<form onSubmit={handeSearch}>
 			<div className="relative">
 				<input
-					className="searchbar bg-[#191A1F] text-white rounded-lg"
+					className="searchbar w-[270px] bg-[#191A1F] text-white rounded-lg"
 					type="text"
 					placeholder="search movies"
 					value={search}
