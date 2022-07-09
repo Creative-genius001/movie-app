@@ -26,7 +26,7 @@ const RatedTvShow = () => {
 					JSON.stringify(res),
 				);
 
-				await setRatedShow(res);
+				setRatedShow(res);
 			}
 		};
 		getRatedShow();

@@ -13,7 +13,7 @@ const SeachedMovie = () => {
 		useState([]);
 
 	useEffect(() => {
-			const params = useParams();
+		const params = useParams();
 		const searchResult = async (data) => {
 			const searchMovies = await axios
 				.get(
@@ -29,7 +29,7 @@ const SeachedMovie = () => {
 				);
 			}
 		};
-		await searchResult(params.search);
+		searchResult(params.search);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
