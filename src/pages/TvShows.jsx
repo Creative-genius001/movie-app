@@ -18,12 +18,12 @@ const TvShows = () => {
 		} else {
 			const response = await axios
 				.get(
-					`https://api.themoviedb.org/3/tv/top_rated?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=1`,
+					`https://api.themoviedb.org/3/movie/upcoming?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=1`,
 				)
 				.catch((err) => console.error(err));
 
 			let res = response.data.results;
-			console.log(res);
+			console.log(response);
 
 			localStorage.setItem(
 				"ratedShow",
@@ -35,14 +35,14 @@ const TvShows = () => {
 	};
 	let navigate = useNavigate();
 	const handleClick = (id) => {
-		navigate("/details/" + id);
+		navigate("/detail/" + id);
 	};
 
 	return (
 		<div className="w-[100%] h-auto bg-[#060607] px-4">
 			<div className=" w-[90%] mx-auto flex-row content-center justify-items-center py-4">
 				<h1 className="text-4xl font-bold text-white">
-					TV Shows
+					Tv Shows
 				</h1>
 				<div className=" flex flex-wrap ">
 					{ratedShow.map((movie) => {

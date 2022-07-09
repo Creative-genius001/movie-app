@@ -26,7 +26,7 @@ const MovieCards = ({ Movies }) => {
 	return (
 		<>
 			<Swiper
-				slidesPerView={1.5}
+				slidesPerView={2}
 				spaceBetween={20}
 				centeredSlides={false}
 				slidesPerGroupSkip={1}

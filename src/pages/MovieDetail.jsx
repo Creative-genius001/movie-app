@@ -117,10 +117,6 @@ const MovieDetail = () => {
 				color="#00BFFF"
 				height={80}
 				width={80}
-				style={{
-					position: "relative",
-					right: "50",
-				}}
 			/>
 		);
 	}

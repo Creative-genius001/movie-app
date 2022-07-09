@@ -11,13 +11,11 @@ const Popular = () => {
 	const searchResult = async (data) => {
 		const searchMovies = await axios
 			.get(
-				`
-https://api.themoviedb.org/3/movie/popular?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=200`,
+				`https://api.themoviedb.org/3/movie/popular?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=100`,
 			)
 			.catch((err) => console.error(err));
 
-		setPopular(searchMovies.data.results);
-		console.log(popular);
+		await setPopular(searchMovies.data.results);
 	};
 	useEffect(() => {
 		searchResult();
