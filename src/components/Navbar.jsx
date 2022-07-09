@@ -34,10 +34,6 @@ const NavBar = () => {
 			</div>
 		</div>
 	);
-
-	const active = {
-		color: "#DC2626",
-	};
 };
 
 export default NavBar;
