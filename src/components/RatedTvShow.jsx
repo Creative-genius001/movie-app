@@ -15,7 +15,7 @@ const RatedTvShow = () => {
 			} else {
 				const response = await axios
 					.get(
-						`https://api.themoviedb.org/3/tv/top_rated?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=1`,
+						`https://api.themoviedb.org/3/movie/upcoming?api_key=0a82a71f7db762d5f3249e80ca6bc5db&language=en-US&page=1`,
 					)
 					.catch((err) => console.error(err));
 
