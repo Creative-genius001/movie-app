@@ -30,6 +30,7 @@ const RatedTvShow = () => {
 				console.log(ratedShow);
 			}
 		};
+		getRatedShow();
 	}, []);
 
 	return (

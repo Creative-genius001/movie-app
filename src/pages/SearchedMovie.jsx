@@ -13,22 +13,22 @@ const SeachedMovie = () => {
 	const [searchedMovies, setSearchedMovies] =
 		useState([]);
 
-	const searchResult = async (data) => {
-		const searchMovies = await axios
-			.get(
-				`https://api.themoviedb.org/3/search/movie?api_key=0a82a71f7db762d5f3249e80ca6bc5db&query=${data}`,
-			)
-			.catch((err) => console.error(err));
-
-		if (searchMovies === []) {
-			return;
-		} else {
-			setSearchedMovies(
-				searchMovies.data.results,
-			);
-		}
-	};
 	useEffect(() => {
+		const searchResult = async (data) => {
+			const searchMovies = await axios
+				.get(
+					`https://api.themoviedb.org/3/search/movie?api_key=0a82a71f7db762d5f3249e80ca6bc5db&query=${data}`,
+				)
+				.catch((err) => console.error(err));
+
+			if (searchMovies === []) {
+				return;
+			} else {
+				setSearchedMovies(
+					searchMovies.data.results,
+				);
+			}
+		};
 		searchResult(params.search);
 	}, []);
 

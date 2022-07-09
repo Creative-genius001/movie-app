@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import YouTube from "react-youtube";
 import MovieCards from "../components/MovieCards";
-import { Keyboard, Navigation } from "swiper";
+import { Keyboard } from "swiper";
 import {
 	Swiper,
 	SwiperSlide,

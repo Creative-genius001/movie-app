@@ -4,7 +4,6 @@ import React, {
 } from "react";
 import axios from "axios";
 import Trending from "../components/Trending";
-import Search from "../components/Search";
 import RatedTvShow from "../components/RatedTvShow";
 
 const Home = () => {
