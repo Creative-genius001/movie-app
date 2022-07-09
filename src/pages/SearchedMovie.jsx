@@ -11,9 +11,9 @@ import {
 const SeachedMovie = () => {
 	const [searchedMovies, setSearchedMovies] =
 		useState([]);
+	const params = useParams();
 
 	useEffect(() => {
-		const params = useParams();
 		const searchResult = async (data) => {
 			const searchMovies = await axios
 				.get(
