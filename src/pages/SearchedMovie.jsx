@@ -9,11 +9,11 @@ import {
 } from "react-router-dom";
 
 const SeachedMovie = () => {
-	const params = useParams();
 	const [searchedMovies, setSearchedMovies] =
 		useState([]);
 
 	useEffect(() => {
+			const params = useParams();
 		const searchResult = async (data) => {
 			const searchMovies = await axios
 				.get(
@@ -29,7 +29,8 @@ const SeachedMovie = () => {
 				);
 			}
 		};
-		searchResult(params.search);
+		await searchResult(params.search);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	let navigate = useNavigate();

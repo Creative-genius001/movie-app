@@ -26,11 +26,11 @@ const RatedTvShow = () => {
 					JSON.stringify(res),
 				);
 
-				setRatedShow(res);
-				console.log(ratedShow);
+				await setRatedShow(res);
 			}
 		};
 		getRatedShow();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
